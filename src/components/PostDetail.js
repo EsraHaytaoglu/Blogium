@@ -3,12 +3,16 @@ import React, { useEffect, useState } from "react";
 import "../css/PostDetail.css";
 import Comments from "./Comments";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import "../css/Modal.css"
+import DeleteModal from "./DeleteModal";
 
 
 const PostDetail = (props) => {
   const { id } = props.match.params;
   const [postDetail, setPostDetail] = useState({});
   const [comments, setComments] = useState([]);
+  const [show, setShow] = useState(false);
 
 
   const handleCommentSubmit = (event,commentBody) => {
@@ -43,6 +47,8 @@ const PostDetail = (props) => {
       });
   }, []);
   return (
+    <React.Fragment>
+    <DeleteModal show={show} setShow={setShow} post={postDetail} push={props.history.push} />
     <div className="container mt-5">
       <div className="d-flex justify-content-center row">
         <div className="col-md-8">
@@ -70,21 +76,23 @@ const PostDetail = (props) => {
             <div className="bg-white">
               <div className="d-flex flex-row fs-12">
                 <div className="like p-2 cursor">
-                <i className="fas fa-edit"></i>
-                  <span className="ml-1">Like</span>
+                
+                <i class="bi bi-pencil-square"></i>
+                <Link to={`/posts/${postDetail.id}/edit`} >
+                  <button className="ml-1 buton">Edit</button></Link>
                 </div>
                 <div className="like p-2 cursor">
-                <i class="fas fa-trash-alt"></i>
-                  <span className="ml-1">Comment</span>
+                <i class="bi bi-archive-fill"></i>
+                  <button className="ml-1 buton " onClick={() => setShow(true)} >Delete</button>
                 </div>
               </div>
             </div>
             <Comments comments={comments} handleSubmit={handleCommentSubmit} />
-            
           </div>
         </div>
       </div>
     </div>
+    </React.Fragment>
   );
 };
 

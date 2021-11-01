@@ -1,25 +1,38 @@
 import { api } from "../api";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import "../App.css"
 
-const INITIAL_POST = {
-  title: "",
-  content: "",
-};
+
 
 const PostForm = (props) => {
-  const [post, setPost] = useState(INITIAL_POST);
+
+  const [post, setPost] = useState({
+    title: "",
+    content: "",
+  });
+
   const [hata, sethata] = useState("");
   const onInputChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
   };
+  console.log("yazi formu porps", props);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
     sethata("");
-    api()
+    if (props.post.title) {
+      api().put(`/posts/${props.match.params.id}`, post )
+      .then((res)=> {
+        console.log(res);
+        props.history.push(`/posts/${props.match.params.id}`);
+      })
+      .catch((error) => {
+        sethata("Title and content required.");
+      });
+    } else {
+      api()
       .post("/posts", post)
       .then((response) => {
         console.log(response);
@@ -28,7 +41,13 @@ const PostForm = (props) => {
       .catch((error) => {
         sethata("Title and content required.");
       });
+    }
+ 
   };
+  useEffect(() => {
+    if(props.post.title && props.post.content) setPost(props.post)
+  }, [props.post])
+
   return (
     <React.Fragment>
     <div >
@@ -48,7 +67,6 @@ const PostForm = (props) => {
         className="form-block"
         onSubmit={(event) => {
           onFormSubmit(event, post);
-          setPost(INITIAL_POST);
         }}
       >
            <div className="row">

@@ -41,11 +41,11 @@ const CommentForm = (props) => {
                         onChange={handleOnChange}
                         name="body"
                         value={commentBody.body}
-                        placeholder="Your text"
+                        placeholder="Your comment"
                       ></textarea>
                     </div>
                   </div>
-                  <button className="btn btn-primary pull-right" type="submit">submit</button>
+                  <button className="ml-3 btn btn-primary pull-right" type="submit">submit</button>
                 </div>
               </form>
             </div>

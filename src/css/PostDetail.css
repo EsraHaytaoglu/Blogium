@@ -1,4 +1,7 @@
-
+.buton {
+    border: none;
+    background-color: inherit;
+}
 
 .be-comment-block {
     margin-bottom: 50px !important;
