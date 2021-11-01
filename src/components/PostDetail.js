@@ -76,13 +76,12 @@ const PostDetail = (props) => {
             <div className="bg-white">
               <div className="d-flex flex-row fs-12">
                 <div className="like p-2 cursor">
-                
-                <i class="bi bi-pencil-square"></i>
+                <i className="bi bi-pencil-square"></i>
                 <Link to={`/posts/${postDetail.id}/edit`} >
                   <button className="ml-1 buton">Edit</button></Link>
                 </div>
                 <div className="like p-2 cursor">
-                <i class="bi bi-archive-fill"></i>
+                <i className="bi bi-archive-fill"></i>
                   <button className="ml-1 buton " onClick={() => setShow(true)} >Delete</button>
                 </div>
               </div>

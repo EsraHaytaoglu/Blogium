@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function CommentList(props) {
   return (
@@ -26,7 +26,13 @@ function CommentList(props) {
                   {comment.created_at}
                 </span>
 
-                <p className="be-comment-text">{comment.body}</p>
+                <p className="be-comment-text">{comment.body}
+
+                {/* <button className="editBtn" onClick={handleEditComment(comment.id)}>
+                <i className=" bi bi-pencil-square"></i>
+                </button> */}
+
+                </p>
               </div>
             </div>
           </div>

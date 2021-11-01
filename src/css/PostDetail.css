@@ -23,7 +23,9 @@
     height: 60px;
     float: left;
     margin-bottom: 15px;
+    
 }
+
 
 .be-ava-comment {
     width: 60px;
@@ -33,6 +35,13 @@
 
 .be-comment-content {
     margin-left: 80px;
+    position: relative;
+}
+.editBtn {
+    position: absolute;
+    margin-left: 50%;
+    border: none;
+    background-color: inherit;
 }
 
 .be-comment-content span {
