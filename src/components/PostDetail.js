@@ -1,7 +1,8 @@
-import axios from "axios";
+import { api } from "../api";
 import React, { useEffect, useState } from "react";
 import "../css/PostDetail.css";
 import Comments from "./Comments";
+import axios from "axios";
 
 
 const PostDetail = (props) => {
@@ -12,9 +13,9 @@ const PostDetail = (props) => {
 
   const handleCommentSubmit = (event,commentBody) => {
     event.preventDefault();
-    axios
+    api()
       .post(
-        `https://react-yazi-yorum.herokuapp.com/posts/${id}/comments`,
+        `/posts/${id}/comments`,
         commentBody
       )
       .then((response) => {
@@ -69,11 +70,11 @@ const PostDetail = (props) => {
             <div className="bg-white">
               <div className="d-flex flex-row fs-12">
                 <div className="like p-2 cursor">
-                  <i className="fa fa-thumbs-o-up"></i>
+                <i className="fas fa-edit"></i>
                   <span className="ml-1">Like</span>
                 </div>
                 <div className="like p-2 cursor">
-                  <i className="fa fa-commenting-o"></i>
+                <i class="fas fa-trash-alt"></i>
                   <span className="ml-1">Comment</span>
                 </div>
               </div>

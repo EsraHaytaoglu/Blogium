@@ -1,4 +1,4 @@
-import axios from "axios";
+import { api } from "../api";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/PostList.css";
@@ -7,8 +7,8 @@ function PostList() {
   const [yaziListesi, setYaziListesi] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://react-yazi-yorum.herokuapp.com/posts")
+    api()
+      .get("/posts")
       .then((response) => {
         setYaziListesi(response.data);
       });

@@ -11,7 +11,6 @@ const CommentForm = (props) => {
 
     const handleOnChange = (event) => {
         setCommentBody({ ...commentBody, [event.target.name]: event.target.value });
-        setCommentBody(COMMENT_INITIAL);
       };
     return (
         <React.Fragment>
@@ -39,7 +38,6 @@ const CommentForm = (props) => {
                     <div className="form-group">
                       <textarea
                         className="form-input"
-                        required=""
                         onChange={handleOnChange}
                         name="body"
                         value={commentBody.body}
