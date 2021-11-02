@@ -23,7 +23,7 @@ const PostForm = (props) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
     sethata("");
-    if (props.post.title) {
+    if (props.post?.title) {
       api().put(`/posts/${id}`, post )
       .then((res)=> {
         console.log(res);

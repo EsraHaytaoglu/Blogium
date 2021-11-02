@@ -2,21 +2,20 @@ import { api } from "../api";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/PostList.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostList } from "../actions";
 
 function PostList() {
-  const [yaziListesi, setYaziListesi] = useState([]);
-
+  const dispatch = useDispatch();
+  const postList = useSelector((state) => state.postList)
+  console.log({postList});
+  
   useEffect(() => {
-    api()
-      .get("/posts")
-      .then((response) => {
-        setYaziListesi(response.data);
-      });
-
+    dispatch(getPostList());
   }, []);
   return (
     <div className="mt-3 ">
-      {yaziListesi.map((yazi) => {
+      {postList.map((yazi) => {
         return (
           <div className="card p-3 mb-2" id="tv" key={yazi.id}>
             <div className="d-flex flex-row">
