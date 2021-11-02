@@ -1,3 +1,19 @@
+body {
+    font-family: 'Just Another Hand', cursive;
+}
+
+.sketchy {
+    border: 3px solid #333333;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    background: transparent;
+    position: relative;
+}
+.sketch {
+    border: 1px solid #333333;
+    border-radius: 2% 10% 5% 4% / 1% 1% 2% 4%;
+    background: #ffffff;
+}
+
 .buton {
     border: none;
     background-color: inherit;
@@ -16,6 +32,7 @@
     color: #262626;
     margin-bottom: 15px;
     font-family: 'Conv_helveticaneuecyr-bold';
+    text-transform: uppercase;
 }
 
 .be-img-comment {
@@ -38,10 +55,9 @@
     position: relative;
 }
 .editBtn {
-    position: absolute;
-    margin-left: 50%;
     border: none;
     background-color: inherit;
+    
 }
 
 .be-comment-content span {
@@ -52,9 +68,12 @@
 
 .be-comment-name {
     font-size: 13px;
-    font-family: 'Conv_helveticaneuecyr-bold';
+    font-family: 'Just Another Hand', cursive;
+    font-weight: bold;
 }
-
+.name{
+    text-transform: uppercase;
+}
 .be-comment-content a {
     color: #383b43;
 }

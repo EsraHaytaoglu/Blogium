@@ -6,7 +6,7 @@ function Comments(props) {
     
     return (
         <React.Fragment>
-        <CommentList comments={props.comments} />
+        <CommentList comments={props.comments}  post={props.post} />
         <CommentForm handleSubmit={props.handleSubmit} />
         </React.Fragment>
     )

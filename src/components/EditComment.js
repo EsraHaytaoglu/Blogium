@@ -1,34 +1,35 @@
-// import React, { useState } from "react";
+// import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
+// import { api } from "../api";
 
 // function EditComment(props) {
-//   console.log(props);
-//   const [post, setPost] = useState({
-//     title: "",
-//     content: "",
-//   });
-//   const [hata, sethata] = useState("");
-//   const onInputChange = (event) => {
-//     setPost({ ...post, [event.target.name]: event.target.value });
-//   };
 
-//   const onFormSubmit = (event) => {
-//     event.preventDefault();
-//     sethata("");
-//     // api()
-//     //   .put(`/posts/${props.match.params.id}`, post)
-//     //   .then((res) => {
-//     //     console.log(res);
-//     //     props.history.push(`/posts/${props.match.params.id}`);
-//     //   })
-//     //   .catch((error) => {
-//     //     sethata("Title and content required.");
-//     //   });
-//   };
+//     const [comment, setComment] = useState({
+//         display_name: "",
+//         body:"",
+//     })
+//     const handleOnChange = (event) => {
+//         setComment({ ...comment, [event.target.name]: event.target.value });
+//       };
+    
+//     const {post_id , id } = props.match.params
+//     useEffect(() => {
+//         api()
+//             .put(`/posts/${post_id}/comments/${id}`, comment)
+//             .then((res)=> {
+//                 console.log(res);
+//                 props.history.push(`/posts/${post_id}`);
+//              })
+//              .catch((error) => {
+//                 console.log(error);
+//             });
+//     }, [])
+
+ 
 //   return (
 //     <div>
 //       <div>
-//         {hata && (
+//         {/* {hata && (
 //           <div>
 //             <div
 //               className="alert fade alert-simple alert-danger alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"
@@ -39,13 +40,11 @@
 //               <strong className="font__weight-semibold">Oh snap!</strong> {hata}
 //             </div>
 //           </div>
-//         )}
+//         )} */}
 
 //         <form
 //           className="form-block"
-//           onSubmit={(event) => {
-//             onFormSubmit(event, post);
-//           }}
+          
 //         >
 //           <div className="row">
 //             <div className="col-xs-12 col-sm-12">
@@ -57,8 +56,7 @@
 //                   className="form-input"
 //                   type="text"
 //                   name="display_name"
-//                   // onChange={handleOnChange}
-//                   // value={commentBody.display_name}
+//                   onChange={handleOnChange}
 //                   placeholder="Your name"
 //                 />
 //               </div>
@@ -67,9 +65,8 @@
 //               <div className="form-group">
 //                 <textarea
 //                   className="form-input"
-//                   // onChange={handleOnChange}
-//                   // name="body"
-//                   // value={commentBody.body}
+//                   onChange={handleOnChange}
+//                   name="body"
 //                   placeholder="Your comment"
 //                 ></textarea>
 //               </div>

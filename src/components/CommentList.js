@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function CommentList(props) {
   return (
@@ -7,8 +8,8 @@ function CommentList(props) {
       {props.comments.map((comment) => {
         return (
           <div key={comment.id}>
-            <div className="be-comment">
-              <div className="be-img-comment">
+            <div className="be-comment  mb-2">
+              <div className="be-img-comment ">
                 <a href="blog-detail-2.html">
                   <img
                     src="https://bootdey.com/img/Content/avatar/avatar1.png"
@@ -17,7 +18,7 @@ function CommentList(props) {
                   />
                 </a>
               </div>
-              <div className="be-comment-content">
+              <div className="be-comment-content  ">
                 <span className="be-comment-name">
                   <a href="blog-detail-2.html">{comment.display_name}</a>
                 </span>
@@ -25,12 +26,13 @@ function CommentList(props) {
                   <i className="fa fa-clock-o"></i>
                   {comment.created_at}
                 </span>
-
-                <p className="be-comment-text">{comment.body}
-
-                {/* <button className="editBtn" onClick={handleEditComment(comment.id)}>
+            
+                <p className="be-comment-text sketch">{comment.body}
+                <Link to={`/posts/${props.post.id}/comments/${comment.id}`}>
+                <button className="editBtn" >
                 <i className=" bi bi-pencil-square"></i>
-                </button> */}
+                </button>
+                </Link>
 
                 </p>
               </div>

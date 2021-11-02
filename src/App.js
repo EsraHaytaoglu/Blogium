@@ -4,6 +4,7 @@ import PostList from "./components/PostList";
 import PostDetail from "./components/PostDetail";
 import AddPost from "./components/AddPost";
 import EditPost from "./components/EditPost";
+import EditComment from "./components/EditComment";
 // import EditComment from "./components/EditComment";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <Route path="/posts/:id" exact component={PostDetail} />
         <Route path="/addpost" component={AddPost} />
         <Route path="/posts/:id/edit" component={EditPost} />
-        {/* <Route path="/posts/:post_id/comments/:id" component={EditComment} /> */}
+        <Route path="/posts/:post_id/comments/:id" component={EditComment} />
       </Router>
     </div>
   );

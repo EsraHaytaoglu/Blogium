@@ -18,7 +18,7 @@ function PostList() {
     <div className="mt-3 ">
       {yaziListesi.map((yazi) => {
         return (
-          <div className="card p-3 mb-2" key={yazi.id}>
+          <div className="card p-3 mb-2" id="tv" key={yazi.id}>
             <div className="d-flex flex-row">
               <img
                 src="https://bootdey.com/img/Content/avatar/avatar1.png"

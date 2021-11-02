@@ -1,7 +1,6 @@
 import { api } from "../api";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "../App.css"
 
 
@@ -14,8 +13,10 @@ const PostForm = (props) => {
   });
 
   const [hata, sethata] = useState("");
+  const { id }= useParams();
+  const history= useHistory();
   const onInputChange = (event) => {
-    setPost({ ...post, [event.target.name]: event.target.value });
+       setPost({ ...post, [event.target.name]: event.target.value });
   };
   console.log("yazi formu porps", props);
 
@@ -23,10 +24,10 @@ const PostForm = (props) => {
     event.preventDefault();
     sethata("");
     if (props.post.title) {
-      api().put(`/posts/${props.match.params.id}`, post )
+      api().put(`/posts/${id}`, post )
       .then((res)=> {
         console.log(res);
-        props.history.push(`/posts/${props.match.params.id}`);
+        history.push(`/posts/${id}`);
       })
       .catch((error) => {
         sethata("Title and content required.");
@@ -108,4 +109,4 @@ const PostForm = (props) => {
   );
 };
 
-export default withRouter(PostForm);
+export default PostForm;
