@@ -41,7 +41,16 @@ export const editPost = (id, post, push) => (dispatch) => {
     dispatch({ type: "EDIT_POST_ERROR", payload: "Edit post error"})
   });
 };
-
+export const editComment = (post_id, id, comment) => (dispatch) => {
+  api()
+  .put(`/posts/${post_id}/comments/${id}`, comment)
+  .then((response)=> {
+    dispatch({ type: "EDIT_COMMENT", payload:response.data})
+   })
+   .catch((error) => {
+    dispatch({ type: "EDIT_COMMENT_ERROR", payload: "Edit COMMENT error"})
+  });
+};
 
 export const addComment = (id, comment) => (dispatch) => {
   api()
@@ -84,6 +93,20 @@ export const deletePost = (id, setShow, push  ) => (dispatch) => {
     dispatch({
       type: "DELETE_POST_ERROR",
       payload: "delete post   error",
+    });
+  })
+};
+export const deleteComment = (id,post_id, push  ) => (dispatch) => {
+  api()
+  .delete(`/posts/${post_id}/comments/${id}`)
+  .then(()=> {
+    dispatch({ type: "DELETE_COMMENT", payload: id })
+      push(`/posts/${post_id}`)
+  })
+  .catch(()=> {
+    dispatch({
+      type: "DELETE_COMMENT_ERROR",
+      payload: "delete comment   error",
     });
   })
 };

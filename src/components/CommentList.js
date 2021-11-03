@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import DeleteComment from "./DeleteComment";
 
 function CommentList(props) {
+
+  
   return (
     <React.Fragment>
       <h1 className="comments-title">Comments ({props.comments.length})</h1>
@@ -31,6 +34,12 @@ function CommentList(props) {
                 <Link to={`/posts/${props.post.id}/comments/${comment.id}`}>
                 <button className="editBtn" >
                 <i className=" bi bi-pencil-square"></i>
+                </button>
+                </Link >
+
+                <Link to={`/posts/${props.post.id}/comments/delete/${comment.id}`}>
+                <button  className="editBtn" >
+                <i className="bi bi-archive-fill"></i>
                 </button>
                 </Link>
 
