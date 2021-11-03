@@ -57,12 +57,11 @@ export const addComment = (id, comment) => (dispatch) => {
     });
 };
 
-export const addPost = ( post , push, sethata) => (dispatch) => {
+export const addPost = ( post , sethata) => (dispatch) => {
   api()
   .post("/posts", post)
   .then((response) => {
     dispatch({ type: "ADD_POST", payload: response.data })
-    push("/");
     sethata(null);
   })
   .catch((error) => {

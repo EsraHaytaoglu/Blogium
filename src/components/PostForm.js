@@ -21,6 +21,7 @@ const PostForm = (props) => {
        setPost({ ...post, [event.target.name]: event.target.value });
   };
   const dispatch = useDispatch();
+  console.log(props)
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -29,18 +30,9 @@ const PostForm = (props) => {
       dispatch(editPost(id, post, history.push));
       
     } else {
-      // dispatch(addPost(post, sethata , history.push))
-      
-      // api()
-      // .post("/posts", post)
-      // .then((response) => {
-      //   console.log(response);
-      //   props.history.push("/");
-      //   sethata(null);
-      // })
-      // .catch((error) => {
-      //   sethata("Title and content .");
-      // });
+      console.log("ekleme");
+      dispatch(addPost(post, sethata ))
+      history.push("/")
     }
  
   };
