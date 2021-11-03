@@ -6,13 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPostList } from "../actions";
 import Header from "./Header";
 import Moment from 'react-moment';
-
+import { BigHead } from '@bigheads/core'
+import { getRandomOptions } from "../css/BigHead";
+import moment from "moment";
 
 
 function PostList() {
   const dispatch = useDispatch();
   const postList = useSelector((state) => state.postList)
   console.log({postList});
+
+  const convertRelativeTime = (date) => {
+    return moment(date).fromNow();
+  };
+  
   
   useEffect(() => {
     dispatch(getPostList());
@@ -23,16 +30,13 @@ function PostList() {
     <React.Fragment>
       <Header />
     <main className="mt-3 ">
-      {postList.map((yazi) => {
+      {postList.sort((a, b) => convertRelativeTime(b.created_at) - convertRelativeTime(a.created_at)).map((yazi) => {
         return (
           <div className="card p-3 mb-2" id="tv" key={yazi.id}>
             <div className="d-flex flex-row">
-              <img
-                src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                height="40"
-                width="40"
-                className="rounded-circle mr-4"
-              />
+            <div style={{ width: "60px" }}  className="rounded-circle mr-4">
+            <BigHead {...getRandomOptions()} />
+             </div>
               <div className="d-flex flex-column ms-2">
                 <Link to={`/posts/${yazi.id}`}>
                 <h6 className="mb-1 text-primary">{yazi.title}</h6>
@@ -53,7 +57,7 @@ function PostList() {
               </div>
               <div className="d-flex flex-row">
                 <span className="text-muted fw-normal fs-10">
-               {yazi.created_at}
+               {convertRelativeTime(yazi?.created_at)}
                 </span>
               </div>
             </div>

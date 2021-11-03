@@ -127,6 +127,8 @@
 		1px -1px 0 #333333;
 	transition: 500ms ease-in-out;
   margin-left: 75%;
+  font-family: 'Irish Grover', cursive !important;
+  background-color: wheat;
 }
 .myBtn:hover {
 	box-shadow: 10px 5px 0 #333333, -10px -5px 0 #333333;

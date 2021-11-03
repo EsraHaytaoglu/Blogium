@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { editComment } from "../actions";
+import { BigHead } from '@bigheads/core'
+import { getRandomOptions } from "../css/BigHead";
 
 function CommentList(props) {
   const [editCommentId, setEditCommentId] = useState(null);
@@ -64,6 +66,7 @@ function CommentList(props) {
                       <div className="form-group">
                         <textarea
                           className="form-input"
+                          
                           onChange={handleOnChange}
                           name="body"
                           type="text"
@@ -71,10 +74,7 @@ function CommentList(props) {
                         ></textarea>
                       </div>
                     </div>
-                    <button
-                      className="myBtn "
-                      type="submit"
-                    >
+                    <button className="myBtn " type="submit">
                       submit
                     </button>
                   </div>
@@ -86,17 +86,16 @@ function CommentList(props) {
               <div key={comment.id}>
                 <div className="be-comment  mb-2">
                   <div className="be-img-comment ">
-                    <span>
-                      <img
-                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                        alt=""
-                        className="be-ava-comment"
-                      />
+                    <span
+                      style={{ width: "40px" }}
+                      className="rounded-circle mr-4"
+                    >
+                      <BigHead {...getRandomOptions()} />
                     </span>
                   </div>
                   <div className="be-comment-content  ">
                     <span className="be-comment-name">
-                      <span>{comment.display_name}</span>
+                      <span >{comment.display_name}</span>
                     </span>
                     <span className="be-comment-time">
                       <i className="fa fa-clock-o"></i>

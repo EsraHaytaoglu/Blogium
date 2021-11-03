@@ -32,7 +32,7 @@ body {
 
 .comments-title {
     font-size: 16px;
-    color: #262626;
+    color: wheat;
     margin-bottom: 15px;
     font-family: 'Conv_helveticaneuecyr-bold';
     text-transform: uppercase;
@@ -70,9 +70,11 @@ body {
 }
 
 .be-comment-name {
-    font-size: 13px;
-    font-family: 'Just Another Hand', cursive;
+    font-size: 15px;
     font-weight: bold;
+    font-family: 'Conv_helveticaneuecyr-bold';
+    color: wheat;
+
 }
 .name{
     text-transform: uppercase;

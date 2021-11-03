@@ -7,6 +7,8 @@ import "../css/Modal.css"
 import DeleteModal from "./DeleteModal";
 import { useDispatch, useSelector } from "react-redux";
 import { addComment, getPost } from "../actions";
+import { BigHead } from '@bigheads/core'
+import { getRandomOptions } from "../css/BigHead";
 
 
 const PostDetail = () => {
@@ -36,11 +38,9 @@ const PostDetail = () => {
             <div className="sketchy">
             <div className=" p-2 " >
               <div className="d-flex flex-row user-info" >
-                <img
-                  className="rounded-circle"
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  width="40"
-                />
+              <div style={{ width: "60px" }}  className="rounded-circle ">
+            <BigHead {...getRandomOptions()} />
+             </div>
                 <div className="d-flex flex-column justify-content-start ml-2">
                   <span className="d-block font-weight-bold name" >
                     {postDetail.title}
