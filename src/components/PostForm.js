@@ -21,7 +21,6 @@ const PostForm = (props) => {
        setPost({ ...post, [event.target.name]: event.target.value });
   };
   const dispatch = useDispatch();
-  console.log(props)
 
   const onFormSubmit = (event) => {
     event.preventDefault();

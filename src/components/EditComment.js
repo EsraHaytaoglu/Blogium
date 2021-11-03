@@ -9,13 +9,10 @@ function EditComment(props) {
         body: "",
       });
       const {post_id , id } = useParams();
-      console.log(id);
 
-      useEffect(() => {
-        
-        
-        
-      }, [])
+      const commentRedux = useSelector(state => state.postDetail.comments)
+      const co = commentRedux.filter(comment=> comment.id === id)
+      console.log(co);
 
 
     const history = useHistory();
@@ -37,6 +34,7 @@ function EditComment(props) {
   return (
     <div>
       <div>
+        <h1>Edit comment</h1>
         {/* {hata && (
           <div>
             <div
