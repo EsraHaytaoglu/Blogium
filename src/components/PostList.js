@@ -15,6 +15,8 @@ function PostList() {
   }, []);
   return (
     <div className="mt-3 ">
+      <Link to="/addpost" >
+      <button class="style-3">ADD ⚡</button></Link>
       {postList.map((yazi) => {
         return (
           <div className="card p-3 mb-2" id="tv" key={yazi.id}>

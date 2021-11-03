@@ -2,6 +2,8 @@ import { api } from "../api";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import "../App.css"
+import {addPost, editPost} from "../actions"
+import { useDispatch } from "react-redux";
 
 
 
@@ -12,41 +14,38 @@ const PostForm = (props) => {
     content: "",
   });
 
-  const [hata, sethata] = useState("");
+  const [hata, sethata] = useState(null);
   const { id }= useParams();
   const history= useHistory();
   const onInputChange = (event) => {
        setPost({ ...post, [event.target.name]: event.target.value });
   };
-  console.log("yazi formu porps", props);
+  const dispatch = useDispatch();
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    sethata("");
+    sethata(null);
     if (props.post?.title) {
-      api().put(`/posts/${id}`, post )
-      .then((res)=> {
-        console.log(res);
-        history.push(`/posts/${id}`);
-      })
-      .catch((error) => {
-        sethata("Title and content required.");
-      });
+      dispatch(editPost(id, post, history.push));
+      
     } else {
-      api()
-      .post("/posts", post)
-      .then((response) => {
-        console.log(response);
-        props.history.push("/");
-      })
-      .catch((error) => {
-        sethata("Title and content required.");
-      });
+      // dispatch(addPost(post, sethata , history.push))
+      
+      // api()
+      // .post("/posts", post)
+      // .then((response) => {
+      //   console.log(response);
+      //   props.history.push("/");
+      //   sethata(null);
+      // })
+      // .catch((error) => {
+      //   sethata("Title and content .");
+      // });
     }
  
   };
   useEffect(() => {
-    if(props.post.title && props.post.content) setPost(props.post)
+    if(props.post?.title && props.post?.content) setPost({ title: props.post.title, content: props.post.content })
   }, [props.post])
 
   return (

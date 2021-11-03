@@ -2,55 +2,33 @@ import { api } from "../api";
 import React, { useEffect, useState } from "react";
 import "../css/PostDetail.css";
 import Comments from "./Comments";
-import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
 import "../css/Modal.css"
 import DeleteModal from "./DeleteModal";
+import { useDispatch, useSelector } from "react-redux";
+import { addComment, getPost } from "../actions";
 
 
 const PostDetail = () => {
   const { id } = useParams();
-  const [postDetail, setPostDetail] = useState({});
-  const [comments, setComments] = useState([]);
+   const postDetail = useSelector(state => state.postDetail)
   const [show, setShow] = useState(false);
 
   const history = useHistory();
+  const dispatch = useDispatch()
 
 
-  const handleCommentSubmit = (event,commentBody) => {
+  const handleCommentSubmit = (event,comment) => {
     event.preventDefault();
-    api()
-      .post(
-        `/posts/${id}/comments`,
-        commentBody
-      )
-      .then((response) => {
-        setComments([...comments, response.data]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+   dispatch(addComment(id, comment))
   };
 
   useEffect(() => {
-    axios
-      .all([
-        axios.get(`https://react-yazi-yorum.herokuapp.com/posts/${id}`),
-        axios.get(
-          `https://react-yazi-yorum.herokuapp.com/posts/${id}/comments`
-        ),
-      ])
-      .then((responses) => {
-        setPostDetail(responses[0].data);
-        setComments(responses[1].data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(getPost(id))
   }, []);
   return (
     <React.Fragment>
-    <DeleteModal show={show} setShow={setShow} post={postDetail} push={history.push} />
+    <DeleteModal show={show} setShow={setShow} post={postDetail}  />
     <div className="container mt-5">
       <div className="d-flex justify-content-center row" >
         <div className="col-md-8">
@@ -90,7 +68,7 @@ const PostDetail = () => {
               </div>
             </div>
             </div>
-            <Comments comments={comments}  post={postDetail} handleSubmit={handleCommentSubmit} />
+            <Comments comments={postDetail.comments}  post={postDetail} handleSubmit={handleCommentSubmit} />
           </div>
         </div>
       </div>

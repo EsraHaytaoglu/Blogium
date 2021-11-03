@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { api } from "../api";
 import "../css/Modal.css";
+import { deletePost } from "../actions"
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function DeleteModal(props) {
-   const  {show, setShow, post, push} = props;
-   const [hata, sethata] = useState("")
+   const  {show, setShow, post } = props;
+   const error = useSelector(state => state.deletePostError)
+   const { push } = useHistory();
+
+   const dispatch = useDispatch()
 
    const handleDelete =  (id) => {
-       api()
-        .delete(`/posts/${id}`)
-        .then(()=> {
-            setShow(false);
-            push("/")
-        })
-        .catch(()=> {
-            sethata("An error occurred while deleting the post.")
-        })
+    dispatch(deletePost(post.id, setShow, push))
    }
   return (
     <React.Fragment>
@@ -32,7 +30,7 @@ function DeleteModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this post?
-            {hata && {hata}}
+            {error && {error}}
              </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={()=> setShow(false) }>
