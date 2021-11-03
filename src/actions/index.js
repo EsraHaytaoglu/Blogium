@@ -41,9 +41,9 @@ export const editPost = (id, post, push) => (dispatch) => {
     dispatch({ type: "EDIT_POST_ERROR", payload: "Edit post error"})
   });
 };
-export const editComment = (post_id, id, comment) => (dispatch) => {
+export const editComment = (post_id, editCommentId, comment) => (dispatch) => {
   api()
-  .put(`/posts/${post_id}/comments/${id}`, comment)
+  .put(`/posts/${post_id}/comments/${editCommentId}`, comment)
   .then((response)=> {
     dispatch({ type: "EDIT_COMMENT", payload:response.data})
    })

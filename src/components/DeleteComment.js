@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { api } from "../api";
 import "../css/Modal.css";
-import { deleteComment, deletePost } from "../actions"
+import { deleteComment} from "../actions"
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
