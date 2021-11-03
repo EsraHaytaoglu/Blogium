@@ -1,9 +1,13 @@
-import { api } from "../api";
-import React, { useEffect, useState } from "react";
+
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/PostList.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostList } from "../actions";
+import Header from "./Header";
+import Moment from 'react-moment';
+
+
 
 function PostList() {
   const dispatch = useDispatch();
@@ -13,10 +17,12 @@ function PostList() {
   useEffect(() => {
     dispatch(getPostList());
   }, []);
+
+  
   return (
-    <div className="mt-3 ">
-      <Link to="/addpost" >
-      <button class="style-3">ADD ⚡</button></Link>
+    <React.Fragment>
+      <Header />
+    <main className="mt-3 ">
       {postList.map((yazi) => {
         return (
           <div className="card p-3 mb-2" id="tv" key={yazi.id}>
@@ -30,7 +36,7 @@ function PostList() {
               <div className="d-flex flex-column ms-2">
                 <Link to={`/posts/${yazi.id}`}>
                 <h6 className="mb-1 text-primary">{yazi.title}</h6>
-                {/* <p className="comment-text">{yazi.content}</p> */}
+                <p className="comment-text">{yazi.content.substring(0, 100)}</p>
                 </Link>
               </div>
             </div>
@@ -47,14 +53,15 @@ function PostList() {
               </div>
               <div className="d-flex flex-row">
                 <span className="text-muted fw-normal fs-10">
-                  {yazi.created_at}
+               {yazi.created_at}
                 </span>
               </div>
             </div>
           </div>
         );
       })}
-    </div>
+    </main>
+    </React.Fragment>
   );
 }
 

@@ -14,6 +14,7 @@ const CommentForm = (props) => {
       };
     return (
         <React.Fragment>
+          <h5>ADD Comment form </h5>
             <div className=" p-2 ">
               <form className="form-block" onSubmit={(event) => {
                   props.handleSubmit(event, commentBody)
@@ -45,7 +46,7 @@ const CommentForm = (props) => {
                       ></textarea>
                     </div>
                   </div>
-                  <button className="ml-3 btn btn-primary pull-right" type="submit">submit</button>
+                  <button className="myBtn mb-5 font" type="submit" >submit</button>
                 </div>
               </form>
             </div>

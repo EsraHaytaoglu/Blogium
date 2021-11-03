@@ -1,4 +1,4 @@
-import { api } from "../api";
+
 import React, { useEffect, useState } from "react";
 import "../css/PostDetail.css";
 import Comments from "./Comments";
@@ -57,13 +57,13 @@ const PostDetail = () => {
             <div >
               <div className="d-flex flex-row fs-12">
                 <div className="like p-2 cursor">
-                <i className="bi bi-pencil-square"></i>
+                <i className="bi bi-pencil-square hover"></i>
                 <Link to={`/posts/${postDetail.id}/edit`} >
-                  <button className="ml-1 buton">Edit</button></Link>
+                  <button className="ml-1 buton font"><span >Edit</span></button></Link>
                 </div>
                 <div className="like p-2 cursor">
-                <i className="bi bi-archive-fill"></i>
-                  <button className="ml-1 buton " onClick={() => setShow(true)} >Delete</button>
+                <i className="bi bi-archive-fill hover"></i>
+                  <button className="ml-1 buton font " onClick={() => setShow(true)} ><span >Delete</span></button>
                 </div>
               </div>
             </div>

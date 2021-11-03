@@ -84,11 +84,11 @@ const PostForm = (props) => {
               ></textarea>
             </div>
           </div>
-          <button className="btn btn-primary pull-right mr-2" type="submit">
+          <button className="myBtn" type="submit">
             submit
           </button>
           <Link to="/">
-            <button className="btn btn-primary pull-right" type="submit">
+            <button className="myBtn" type="submit">
               back
             </button>
           </Link>

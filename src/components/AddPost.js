@@ -6,7 +6,7 @@ function AddPost() {
 
     return (
         <div className='container'>
-        <h1>Yazi Ekleme Formu</h1>
+        <h1 style={{ marginLeft: 200}}>Add Post Form </h1>
         <PostForm />
         </div>
     )

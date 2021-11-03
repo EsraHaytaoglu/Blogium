@@ -5,13 +5,16 @@ body {
 .sketchy {
     border: 3px solid #333333;
     border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
-    background: transparent;
     position: relative;
+    background-color: white;
 }
 .sketch {
     border: 1px solid #333333;
     border-radius: 2% 10% 5% 4% / 1% 1% 2% 4%;
-    background: #ffffff;
+    background: #ffffff;    
+}
+.margin{
+ margin-left: 55%;
 }
 
 .buton {

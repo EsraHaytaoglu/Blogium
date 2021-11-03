@@ -117,3 +117,26 @@
     opacity: 0;
   }
 }
+.myBtn{
+  border: 3px solid #333333;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    margin: 0 1rem 0 1rem ;
+    box-shadow: 1px 1px 0 #333333,
+		-1px -1px 0 #333333,
+		-1px 1px 0 #333333,
+		1px -1px 0 #333333;
+	transition: 500ms ease-in-out;
+  margin-left: 75%;
+}
+.myBtn:hover {
+	box-shadow: 10px 5px 0 #333333, -10px -5px 0 #333333;
+}
+.font {
+  font-family: 'Irish Grover', cursive !important;
+  font-weight: 300;
+  font-size: 18px;
+}
+.hover:hover {
+  color: orangered;
+  transition: 2s;
+}
